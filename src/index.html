@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="wap-font-scale" content="no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="x5-pagetype" content="newspage" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="description" itemprop="description" content="WebVR电力模型展示系统" />
+  <title>WebVR电力模型展示系统</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    
+    #stats-output {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 100;
+    }
+
+
+  </style>
+</head>
+<body>
+  <div id="wrapper">
+    <div id="stats-output"></div>
+    <div id="webgl-output"></div>
+    <div id="container">
+      <div class="model_panel">
+        <h2 class="model_panel-title">模型列表</h2>
+        <div class="model_container">
+          <div class="model_list">
+            <div class="model_item" data-name="model_4P">
+              <div class="model_item-photo"></div>
+              <div class="model_item-title">4P</div>
+            </div>
+            <div class="model_item"  data-name="model_2">
+              <div class="model_item-photo"></div>
+              <div class="model_item-title">IP 1</div>
+            </div>
+            <div class="model_item">
+              <div class="model_item-photo"></div>
+              <div class="model_item-title">IP 1</div>
+            </div>
+            <div class="model_item">
+              <div class="model_item-photo"></div>
+              <div class="model_item-title">IP 1</div>
+            </div>
+            <div class="model_item">
+              <div class="model_item-photo"></div>
+              <div class="model_item-title">IP 1</div>
+            </div>
+            <div class="model_item">
+              <div class="model_item-photo"></div>
+              <div class="model_item-title">IP 1</div>
+            </div>
+            <div class="model_item">
+              <div class="model_item-photo"></div>
+              <div class="model_item-title">IP 1</div>
+            </div>
+            <div class="model_item">
+              <div class="model_item-photo"></div>
+              <div class="model_item-title">IP 1</div>
+            </div>
+            <div class="model_item">
+              <div class="model_item-photo"></div>
+              <div class="model_item-title">IP 1</div>
+            </div>
+            <div class="model_item">
+              <div class="model_item-photo"></div>
+              <div class="model_item-title">IP 1</div>
+            </div>
+            <div class="model_item">
+              <div class="model_item-photo"></div>
+              <div class="model_item-title">IP 1</div>
+            </div>
+            <div class="model_item">
+              <div class="model_item-photo"></div>
+              <div class="model_item-title">IP 1</div>
+            </div>
+            <div class="model_item">
+              <div class="model_item-photo"></div>
+              <div class="model_item-title">IP 1</div>
+            </div>
+            <div class="model_item">
+              <div class="model_item-photo"></div>
+              <div class="model_item-title">IP 1</div>
+            </div>
+            <div class="model_item">
+              <div class="model_item-photo"></div>
+              <div class="model_item-title">IP 1</div>
+            </div>
+            <div class="model_item">
+              <div class="model_item-photo"></div>
+              <div class="model_item-title">IP 1</div>
+            </div>
+            <div class="model_item">
+              <div class="model_item-photo"></div>
+              <div class="model_item-title">IP 1</div>
+            </div>
+            <div class="model_item">
+              <div class="model_item-photo"></div>
+              <div class="model_item-title">IP 1</div>
+            </div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="progress_bar">
+        <div class="progress_line">
+          <div class="progress_line-current"></div>
+        </div>
+        <p class="progress_text">加载模型中：100%</p>
+      </div>
+    </div>
+  </div>
+  <script src="/libs/three.js"></script>
+  <!--  <script src="/libs/OrbitControls.js"></script> -->
+  <script src="/libs/stats.js"></script>
+  <!-- <script src="/libs/controls/OrbitControls.js"></script> -->
+  <script src="/libs/controls/TrackballControls.js"></script>
+  <script src="/libs/loaders/OBJLoader.js"></script>
+  <script src="/libs/jquery.js"></script>
+  <!--  <script src="/libs/jquery.rotate.js"></script> -->
+  <!--  <script src="/libs/jquery.easing.js"></script> -->
+  <script src="/__build__/bundle.js"></script>
+</body>
+</html>
