@@ -21,10 +21,10 @@ export default {
       $('.progress_line-current').width(`${opt.percent}%` || 0);
     }
 
-    $('.progress_bar').show();
+    $('.progress_container').show();
   },
 
   hide() {
-    $('.progress_bar').fadeOut(200);
+    $('.progress_container').fadeOut(200);
   },
 }

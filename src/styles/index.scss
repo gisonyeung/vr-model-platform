@@ -3,6 +3,9 @@ body {
 	font-family: Microsoft YaHei;
 }
 
+#vr-output {
+	display: none;
+}
 
 .model {
 
@@ -87,15 +90,28 @@ body {
 }
 
 .progress {
-	&_bar {
+
+	&_container {
 		display: none;
+	}
+
+	&_mask {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 100;
+	}
+
+	&_bar {
 		position: absolute;
 		left: 50%;
 		top: 50%;
 		margin-left: -100px;
 		width: 200px;
 		transform: translateY(-50%);
-		z-index: 1;
+		z-index: 10	1;
 	}
 
 	&_line {
@@ -116,4 +132,60 @@ body {
 		font-size: 10px;
 		margin: 5px 0;
 	}
+}
+
+.mode {
+
+	&_selector {
+		display: none;
+		position: absolute;
+		bottom: 30px;
+		right: 50px;
+		font-size: 0;
+		background-color: rgba(#fff, 0.2);
+		border-radius: 2px;
+	}
+
+	&_item {
+		display: inline-block;
+		width: 36px;
+		height: 36px;
+
+		&.mobile {
+			background: url('/assets/images/mode_mobile.png') no-repeat center;
+			background-size: 20px 20px;
+		}
+
+		&.vr {
+			background: url('/assets/images/mode_vr.png') no-repeat center;
+			background-size: 20px 20px;
+		}
+
+		&.active {
+			background-color: rgba(#0434b9, 0.6);
+		}
+
+
+
+	}
+
+}
+
+.tip {
+	display: none;
+	position: absolute;
+	top: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 5px 20px;
+	background-color: rgba(#fff, 0.2);
+	border-radius: 1px;
+	box-shadow: 0 0 5px rgba(#fff, 0.5);
+	z-index: 102;
+
+	&_text {
+		color: #fff;
+		font-size: 12px;
+	}
+
 }

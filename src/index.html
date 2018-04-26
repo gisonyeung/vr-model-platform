@@ -31,7 +31,8 @@
 <body>
   <div id="wrapper">
     <div id="stats-output"></div>
-    <div id="webgl-output"></div>
+    <div id="mobile-output"></div>
+    <div id="vr-output"></div>
     <div id="container">
       <div class="model_panel">
         <h2 class="model_panel-title">模型列表</h2>
@@ -114,19 +115,33 @@
           
         </div>
       </div>
-      <div class="progress_bar">
-        <div class="progress_line">
-          <div class="progress_line-current"></div>
+      <div class="progress_container">
+        <div class="progress_mask"></div>
+        <div class="progress_bar">
+          <div class="progress_line">
+            <div class="progress_line-current"></div>
+          </div>
+          <p class="progress_text">加载模型中：100%</p>
         </div>
-        <p class="progress_text">加载模型中：100%</p>
+      </div>
+      <div class="mode_selector">
+        <div class="mode_item mobile active" data-target="mobile"></div>
+        <div class="mode_item vr" data-target="vr"></div>
+      </div>
+      <div class="tip">
+        <div class="tip_text">请稍候</div>
       </div>
     </div>
   </div>
   <script src="/libs/three.js"></script>
   <!--  <script src="/libs/OrbitControls.js"></script> -->
   <script src="/libs/stats.js"></script>
+  <script src="/libs/VREffect.js"></script>
+  <script src="/libs/webvr-polyfill.min.js"></script>
+  <script src="/libs/webvr-ui.min.js"></script>
   <!-- <script src="/libs/controls/OrbitControls.js"></script> -->
   <script src="/libs/controls/TrackballControls.js"></script>
+  <script src="/libs/controls/VRControls.js"></script>
   <script src="/libs/loaders/OBJLoader.js"></script>
   <script src="/libs/jquery.js"></script>
   <!--  <script src="/libs/jquery.rotate.js"></script> -->
