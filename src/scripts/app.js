@@ -3,6 +3,7 @@ require('../styles/index.scss');
 import menu from './menu';
 import orientation from './orientation';
 import mode from './mode';
+import rotation from './rotation';
 
 // var stats;
 window.controls = null;;
@@ -25,9 +26,9 @@ var vrButton;
 scene = new THREE.Scene();
 
 renderer = new THREE.WebGLRenderer();
-renderer.setClearColor(new THREE.Color(0xFFFFFF));
-renderer.setClearAlpha(0);
+renderer.setClearColor(0x333333);
 renderer.setSize(window.innerWidth, window.innerHeight);
+// renderer.shadowMapEnabled = true;
 
 camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000);
 camera.position.set(10,15,300);
@@ -40,7 +41,7 @@ document.getElementById("mobile-output").appendChild(renderer.domElement);
 scene_vr = new THREE.Scene();
 
 renderer_vr = new THREE.WebGLRenderer();
-renderer_vr.setClearColor(new THREE.Color(0xFFFFFF));
+renderer.setClearColor(0x333333);
 renderer_vr.setClearAlpha(0);
 renderer_vr.setSize(window.innerWidth, window.innerHeight);
 
@@ -70,6 +71,12 @@ light = new THREE.DirectionalLight(0xffffff, 1.0);
 light.position.set(0, 1, 0);
 scene.add(light.clone());
 scene_vr.add(light.clone());
+
+light = new THREE.SpotLight(0xffffff);
+light.position.set(0, 50, 30);
+light.intensity = 2;
+scene.add(light.clone());
+// scene_vr.add(light.clone());
 
 
 function init() {
@@ -274,6 +281,7 @@ window.onload = function() {
   render();
 
   mode.init();
+  rotation.init();
 
   orientation.resize();
 }

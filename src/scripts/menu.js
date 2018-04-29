@@ -1,5 +1,6 @@
 import progress from './progress';
 import mode from './mode';
+import rotation from './rotation';
 import tip from './tip';
 
 
@@ -57,6 +58,43 @@ let modelList = {
 
     }, onProgress, onError);
   },
+  model_rectifier() {
+    var loader = new THREE.OBJLoader(manager);
+    loader.load( '/assets/models/obj/rectifier.obj', function( object ) {
+
+      window.cube = object.children[0].clone();
+
+      cube.scale.set(15,15,15)
+      scene.add(cube);
+      
+      window.cube_vr = object.children[0].clone();
+      cube_vr.position.set(0, controls_vr.userHeight || 0, -1)
+      cube_vr.rotation.set(0,0,0)
+      cube_vr.scale.set(0.08,0.08,0.08)
+      scene_vr.add(cube_vr);
+
+
+    }, onProgress, onError);
+  },
+  model_chair() {
+
+    var loader = new THREE.JSONLoader(manager);
+    loader.load('/assets/models/json/chair.js', function (geometry, mat) {
+      var mesh = new THREE.Mesh(geometry, mat[0]);
+
+      window.cube = mesh.clone();
+      cube.scale.set(100,100,100);
+      cube.position.set(0, -80, 0)
+      scene.add(cube);
+
+      window.cube_vr = mesh.clone();
+      cube_vr.position.set(0, controls_vr.userHeight / 1.3 || 0, -1)
+      cube_vr.rotation.set(0,0,0)
+      cube_vr.scale.set(0.3,0.3,0.3)
+      scene_vr.add(cube_vr);
+
+    }, onProgress, onError);
+  }
 }
 
 
@@ -73,12 +111,25 @@ const initHandler = () => {
 
     if (modelName && typeof(modelList[modelName]) == 'function') {
       if (currentModel !== modelName) {
+
+        if (window.cube_vr) {
+          scene_vr.remove(window.cube_vr);
+          window.cube_vr = null;
+        } 
+
+        if (window.cube) {
+          scene.remove(window.cube);
+          window.cube = null;
+        }
+
         tip.hide();
+
         currentModel = modelName;
 
         modelList[modelName](scene);
 
         mode.show();
+        rotation.show();
         
         $('.model_item.active').removeClass('active');
         $(this).addClass('active');

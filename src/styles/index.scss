@@ -189,3 +189,62 @@ body {
 	}
 
 }
+
+
+.control {
+
+	&_panel {
+		display: none;
+	}
+
+	&_arrow {
+		position: absolute;
+		width: 36px;
+		height: 36px;
+		background: url('/assets/images/arrow.png') no-repeat center;
+		background-size: 20px 20px;
+		background-color: rgba(#fff, 0.2);
+		border-radius: 100%;
+		transition: all 0.2s;
+
+		&:active {
+			background-color: rgba(#fff, 0.1);
+		}
+
+		$start_y: 130px;
+		$dis_y: 80px;
+
+		&.up {
+			background-image: url('/assets/images/arrow_up.png');
+			top: $start_y;
+			right: 60px;
+		}
+
+		&.down {
+			background-image: url('/assets/images/arrow_down.png');
+			top: $start_y + $dis_y;
+			right: 60px;
+		}
+
+		&.right {
+			background-image: url('/assets/images/arrow_right.png');
+			top: $start_y + $dis_y/2;
+			right: 20px;
+		}
+
+		&.left {
+			background-image: url('/assets/images/arrow_left.png');
+			top: $start_y + $dis_y/2;
+			right: 100px;
+		}
+
+
+
+
+		
+
+
+	}
+
+
+}
