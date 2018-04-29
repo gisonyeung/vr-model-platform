@@ -65,12 +65,13 @@ let modelList = {
       window.cube = object.children[0].clone();
 
       cube.scale.set(15,15,15)
+      cube.rotation.set(0.5,0,0)
       scene.add(cube);
       
       window.cube_vr = object.children[0].clone();
       cube_vr.position.set(0, controls_vr.userHeight || 0, -1)
-      cube_vr.rotation.set(0,0,0)
-      cube_vr.scale.set(0.08,0.08,0.08)
+      cube_vr.rotation.set(0.5,0,0)
+      cube_vr.scale.set(0.04,0.04,0.04)
       scene_vr.add(cube_vr);
 
 
@@ -110,6 +111,13 @@ const initHandler = () => {
     let modelName = $(this).attr('data-name');
 
     if (modelName && typeof(modelList[modelName]) == 'function') {
+
+      camera.lookAt(new THREE.Vector3(0, 0, 0));
+      camera.position.set(10,15,300);
+      camera.rotation.set(0,0,0);
+      camera.up.set(0,1,0);
+      camera.scale.set(1,1,1);
+
       if (currentModel !== modelName) {
 
         if (window.cube_vr) {
