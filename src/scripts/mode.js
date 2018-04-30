@@ -14,13 +14,15 @@ const toggle = (mode) => {
 
   if (window.currentMode == mode) return;
 
-  window.currentMode = mode;
+  if (mode !== 'line') {
+    window.currentMode = mode;
+  }
 
   if (mode == 'mobile') {
     tip.show({ text: '已切换到手机浏览模式' });
 
     $('.model_panel').fadeIn(200);
-    $('.mode_item').removeClass('active');
+    $('.mode_item.radio').removeClass('active');
     $('.mode_item.mobile').addClass('active');
 
     $('#mobile-output').show();
@@ -30,7 +32,7 @@ const toggle = (mode) => {
     tip.show({ text: '已切换到VR展示模式' });
 
     $('.model_panel').fadeOut(200);
-    $('.mode_item').removeClass('active');
+    $('.mode_item.radio').removeClass('active');
     $('.mode_item.vr').addClass('active');
 
     $('#vr-output').show();
@@ -38,6 +40,17 @@ const toggle = (mode) => {
 
     effect.requestPresent();
     
+  } else if (mode == 'line') {
+    if (window.isLineMode) {
+      $('.mode_item.line').removeClass('active');
+      window.isLineMode = false;
+      window.cube.material.wireframe = false;
+    } else {
+      $('.mode_item.line').addClass('active');
+      window.isLineMode = true;
+      window.cube.material.wireframe = true;
+    }
+
   }
 
   render();

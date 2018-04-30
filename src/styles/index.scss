@@ -161,6 +161,16 @@ body {
 			background-size: 20px 20px;
 		}
 
+		&.line {
+			background: url('/assets/images/mode_line.png') no-repeat center;
+			background-size: 20px 20px;
+
+			&.active {
+				background-color: rgba(#b9040c, 0.6);
+			}
+		}
+
+
 		&.active {
 			background-color: rgba(#0434b9, 0.6);
 		}
