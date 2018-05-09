@@ -47,7 +47,6 @@ body {
 
 	&_list {
 		width: 104px;
-		box-shadow: 0px 0px 10px rgba(#fff, 0.5);
 
 		&:after {
 			content: '';
@@ -63,6 +62,34 @@ body {
 		margin-bottom: 2px;
 		// border-radius: 1px;
 		background-color: rgba(#fff, 0.2);
+
+		&[data-name=model_rectifier] &-photo {
+			background: url('/assets/images/poster_rectifier.png') no-repeat center;
+			background-size: 40px 40px;
+		}
+		&[data-name=model_mixtable] &-photo {
+			background: url('/assets/images/poster_mixtable.png') no-repeat center;
+			background-size: 40px 40px;
+		}
+		&[data-name=model_QMeter] &-photo {
+			background: url('/assets/images/poster_QMeter.png') no-repeat center;
+			background-size: 40px 40px;
+		}
+		&[data-name=model_cymometer] &-photo {
+			background: url('/assets/images/poster_cymometer.png') no-repeat center;
+			background-size: 40px 40px;
+		}
+		&[data-name=model_DB101] &-photo {
+			background: url('/assets/images/poster_DB101.png') no-repeat center;
+			background-size: 40px 40px;
+		}
+		&[data-name=model_keyboard] &-photo {
+			background: url('/assets/images/poster_keyboard.png') no-repeat center;
+			background-size: 40px 40px;
+		}
+		
+
+
 
 		&:last-child {
 			margin-bottom: 0;
@@ -84,7 +111,11 @@ body {
 			font-size: 10px;
 			color: #fff;
 			text-align: center;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			width: 40px;
 		}
+
 	}
   
 }

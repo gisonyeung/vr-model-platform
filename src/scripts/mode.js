@@ -10,6 +10,25 @@ const hide = () => {
   $('.mode_selector').hide();
 }
 
+const toggleWire = (isOpen) => {
+
+  window.isLineMode = isOpen;
+  if (window.cube.material) {
+    window.cube.material.wireframe = isOpen;
+  } else {
+    window.cube.children.forEach((item) => {
+      item.material.wireframe = isOpen;
+    });
+  }
+
+}
+
+const updateWire = () => {
+  toggleWire(window.isLineMode);
+}
+
+
+
 const toggle = (mode) => {
 
   if (window.currentMode == mode) return;
@@ -43,18 +62,20 @@ const toggle = (mode) => {
   } else if (mode == 'line') {
     if (window.isLineMode) {
       $('.mode_item.line').removeClass('active');
-      window.isLineMode = false;
-      window.cube.material.wireframe = false;
+
+
+      toggleWire(false);
+      
     } else {
       $('.mode_item.line').addClass('active');
-      window.isLineMode = true;
-      window.cube.material.wireframe = true;
+      toggleWire(true)
     }
 
   }
 
   render();
 }
+
 
 const init = () => {
 
@@ -70,5 +91,7 @@ export default {
   show,
   hide,
   toggle,
+  toggleWire,
+  updateWire,
   init,
 }

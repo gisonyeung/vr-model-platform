@@ -130,48 +130,6 @@ function init() {
 
 }
 
-// function init() {
-//   controls = new THREE.VRControls(camera);
-
-//   window.controls = controls;
-
-//   controls.standing = true;
-//   camera.position.y = controls.userHeight;
-
-//   effect = new THREE.VREffect(renderer);
-
-//   effect.setSize(window.innerWidth, window.innerHeight);
-
-//   menu.initHandler(scene);
-
-//   var uiOptions = {
-//     color: 'black',
-//     background: 'white',
-//     corners: 'square'
-//   };
-
-//   vrButton = new webvrui.EnterVRButton(renderer.domElement, uiOptions);
-//   vrButton.on('exit', function() {
-    
-//     mode.toggle('mobile')
-
-//     camera.quaternion.set(0, 0, 0, 1);
-//     camera.position.set(0, controls.userHeight, 0);
-//   });
-
-
-//   var loader1 = new THREE.TextureLoader();
-//   loader1.load('/assets/images/box.png', onTextureLoaded);
-
-
-//   window.addEventListener('resize', onResize, true);
-//   window.addEventListener('vrdisplaypresentchange', onResize, true);
-
-
-//   render();
-
-// }
-
 function onTextureLoaded(texture) {
   texture.wrapS = THREE.RepeatWrapping;
   texture.wrapT = THREE.RepeatWrapping;
