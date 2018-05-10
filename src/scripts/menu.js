@@ -1,5 +1,6 @@
 import progress from './progress';
 import mode from './mode';
+import cache from './cache';
 import rotation from './rotation';
 import tip from './tip';
 
@@ -61,7 +62,7 @@ let modelList = {
         cube_vr.scale.set(0.08,0.08,0.08)
         scene_vr.add(cube_vr);
 
-        resolve();
+        resolve({cube, cube_vr});
 
       }, onProgress, onError);
     });
@@ -99,7 +100,7 @@ let modelList = {
         cube_vr.scale.set(0.04,0.04,0.04)
         scene_vr.add(cube_vr);
 
-        resolve();
+        resolve({cube, cube_vr});
 
       }, onProgress, onError);
     });
@@ -141,7 +142,7 @@ let modelList = {
         cube_vr.scale.set(0.08,0.08,0.08)
         scene_vr.add(cube_vr);
 
-        resolve();
+        resolve({cube, cube_vr});
 
       }, onProgress, onError);
     });
@@ -178,7 +179,7 @@ let modelList = {
         cube_vr.scale.set(0.1,0.1,0.1)
         scene_vr.add(cube_vr);
 
-        resolve();
+        resolve({cube, cube_vr});
 
       }, onProgress, onError);
     });
@@ -206,7 +207,7 @@ let modelList = {
         cube_vr.scale.set(0.06,0.06,0.06)
         scene_vr.add(cube_vr);
 
-        resolve();
+        resolve({cube, cube_vr});
 
       }, onProgress, onError);
     });
@@ -259,7 +260,7 @@ let modelList = {
         cube_vr.scale.set(0.1,0.1,0.1)
         scene_vr.add(cube_vr);
 
-        resolve();
+        resolve({cube, cube_vr});
 
       }, onProgress, onError);
     });
@@ -302,7 +303,7 @@ let modelList = {
         cube_vr.scale.set(1.5,1.5,1.5)
         scene_vr.add(cube_vr);
 
-        resolve();
+        resolve({cube, cube_vr});
 
       }, onProgress, onError);
     });
@@ -337,7 +338,7 @@ let modelList = {
         cube_vr.scale.set(0.06,0.06,0.06)
         scene_vr.add(cube_vr);
 
-        resolve();
+        resolve({cube, cube_vr});
 
       }, onProgress, onError);
     });
@@ -369,7 +370,7 @@ let modelList = {
         cube_vr.scale.set(0.3,0.3,0.3)
         scene_vr.add(cube_vr);
 
-        resolve();
+        resolve({cube, cube_vr});
 
       }, onProgress, onError);
     });
@@ -416,10 +417,30 @@ const initHandler = () => {
 
         currentModel = modelName;
 
-        modelList[modelName](scene)
-          .then(() => {
-            mode.updateWire();
-          });
+        if (cache.has(modelName)) {
+
+          console.log('---通过缓存加载模型---');
+
+          let cubes = cache.get(modelName);
+
+          window.cube = cubes.cube.clone();
+          window.cube_vr = cubes.cube_vr.clone();
+
+          scene.add(window.cube);
+          scene_vr.add(window.cube_vr);
+        } else {
+          console.log('---通过网络加载模型---');
+
+          modelList[modelName](scene)
+            .then((cubes) => {
+              cache.set(modelName, {
+                cube: cubes.cube.clone(),
+                cube_vr: cubes.cube_vr.clone()
+              });
+              mode.updateWire();
+            });
+        }
+
 
         mode.show();
         rotation.show();
