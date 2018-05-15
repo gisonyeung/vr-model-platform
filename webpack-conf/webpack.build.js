@@ -15,6 +15,8 @@ module.exports = merge(common, {
     publicPath: '/dist/'
   },
 
+  mode: 'production',
+
   plugins: [
     // new CleanWebpackPlugin(['/dist/'], {
     //    root: path.resolve('../')

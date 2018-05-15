@@ -30,7 +30,8 @@ module.exports = {
   module: {
     rules: [
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
-      { test: /\.(scss|css)$/, loader: 'style-loader!css!sass' },
+      // { test: /\.(scss|css)$/, loader: 'scss-loader!css!sass' },
+      { test: /\.(scss|css)$/, loader: 'style-loader!css-loader!sass-loader' },
       { test: /\.(png|jpg|jpeg|gif|webp)$/, loader: 'file-loader' },
     ]
   },
